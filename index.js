@@ -222,6 +222,7 @@ btn.addEventListener("click", (event)=> {
     btn2.addEventListener("click", () => {
         btn2.parentElement.remove();
     })
+
 })
 
 

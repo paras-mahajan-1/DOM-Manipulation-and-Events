@@ -153,37 +153,76 @@
 
 // console.log(btn1.id)
 
-const div = document.createElement("div");
-div.textContent = "JS Custom Event";
-div.setAttribute("class", "note");
+// const div = document.createElement("div");
+// div.textContent = "JS Custom Event";
+// div.setAttribute("class", "note");
 
+// document.body.appendChild(div);
+
+// function highlight(element) {
+//     const bgColor = "yellow";
+//     element.style.backgroundColor = bgColor;
+
+//     let event = new CustomEvent("mark", {
+//         detail: {
+//             backgroundColor: bgColor
+//         }
+//     });
+//     element.dispatchEvent(event);
+// }
+
+// function addBorder(element) {
+//     element.style.border = "solid 1px red";
+// }
+
+// div.addEventListener('mark', (event) => {
+//     console.log(this);
+//     addBorder(this);
+
+//     console.log(event.detail);
+// })
+
+// highlight(div);
+
+const div = document.createElement("div");
 document.body.appendChild(div);
 
-function highlight(element) {
-    const bgColor = "yellow";
-    element.style.backgroundColor = bgColor;
+const heading = document.createElement("h1");
+heading.textContent = "My shopping list"
+div.appendChild(heading);
 
-    let event = new CustomEvent("mark", {
-        detail: {
-            backgroundColor: bgColor
-        }
-    });
-    element.dispatchEvent(event);
-}
+const label = document.createElement("label");
+label.setAttribute("for", "shopping-list");
+label.textContent = "Enter a new item: "
+div.appendChild(label);
 
-function addBorder(element) {
-    element.style.border = "solid 1px red";
-}
+const input = document.createElement("input");
+input.setAttribute("id", "shopping-list");
+input.setAttribute("type", "text");
+div.appendChild(input);
 
-div.addEventListener('mark', (event) => {
-    console.log(this);
-    addBorder(this);
+const btn = document.createElement("button");
+btn.textContent = "Add-item";
+div.appendChild(btn);
+let list = document.createElement("ul");
+div.appendChild(list);
 
-    console.log(event.detail);
+
+btn.addEventListener("click", (event)=> {
+    let liTag = document.createElement("li");
+    list.appendChild(liTag)
+    let value = input.value;
+    // input.value = "";
+    let para = document.createElement("p");
+    para.textContent = value;
+    liTag.appendChild(para)
+    let btn2 = document.createElement("button");
+    btn2.textContent = "Remove";
+    liTag.appendChild(btn2);
+    btn2.addEventListener("click", () => {
+        btn2.parentElement.remove();
+    })
 })
-
-highlight(div);
-
 
 
 
